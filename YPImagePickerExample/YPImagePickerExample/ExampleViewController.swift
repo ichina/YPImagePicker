@@ -180,6 +180,52 @@ class ExampleViewController: UIViewController {
 		//config.fonts.rightBarButtonFont = UIFont.systemFont(ofSize: 22.0, weight: .bold)
 		//config.fonts.navigationBarTitleFont = UIFont.systemFont(ofSize: 22.0, weight: .heavy)
 		//config.fonts.leftBarButtonFont = UIFont.systemFont(ofSize: 22.0, weight: .heavy)
+        
+        let libraryTesting = true
+        if libraryTesting {
+            config = YPImagePickerConfiguration()
+
+            config.library.mediaType = .photoAndVideo
+            config.library.shouldCropToSquare = false
+            config.library.squareCropButtonVisible = false
+            config.library.skipSelectionsGallery = true
+
+            config.showsFilters = false
+            config.shouldSaveNewPicturesToAlbum = false
+            config.startOnScreen = .library
+            config.screens = [.library]
+
+            config.video.libraryTimeLimit = 500.0
+            config.video.minimumTimeLimit = 1
+            config.showsCrop = .none
+            config.wordings.libraryTitle = "Gallery"
+            config.wordings.next = "Done"
+            config.hidesStatusBar = false
+            config.hidesBottomBar = true
+            config.library.maxNumberOfItems = 5
+            config.isScrollToChangeModesEnabled = false
+        }
+
+        let cameraTesting = false
+        if cameraTesting {
+            config = YPImagePickerConfiguration()
+            config.library.mediaType = .photoAndVideo
+            config.showsFilters = false
+            config.shouldSaveNewPicturesToAlbum = false
+            config.onlySquareImagesFromCamera = false
+            config.startOnScreen = .photo
+            config.screens = [.photo, .video]
+
+            config.video.libraryTimeLimit = 500.0
+            config.video.minimumTimeLimit = 1
+            config.showsCrop = .none
+            config.wordings.libraryTitle = "Gallery"
+            config.hidesStatusBar = false
+            config.hidesBottomBar = false
+            config.library.maxNumberOfItems = 5
+            config.isScrollToChangeModesEnabled = true
+            config.library.skipSelectionsGallery = true
+        }
 
         let picker = YPImagePicker(configuration: config)
 

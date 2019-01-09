@@ -226,6 +226,7 @@ final class YPAssetZoomableView: UIScrollView {
         alwaysBounceHorizontal = true
         alwaysBounceVertical = true
         isScrollEnabled = true
+        isUserInteractionEnabled = YPConfig.library.squareCropButtonVisible
     }
     
     override func layoutSubviews() {

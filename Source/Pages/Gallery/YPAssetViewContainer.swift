@@ -92,7 +92,8 @@ class YPAssetViewContainer: UIView {
         multipleSelectionButton-15-|
         multipleSelectionButton.setImage(YPConfig.icons.multipleSelectionOffIcon, for: .normal)
         multipleSelectionButton.Bottom == zoomableView!.Bottom - 15
-        
+
+        squareCropButton.isHidden = !YPConfig.library.squareCropButtonVisible
     }
     
     // MARK: - Square button
@@ -106,6 +107,8 @@ class YPAssetViewContainer: UIView {
     }
     
     public func refreshSquareCropButton() {
+        guard YPConfig.library.squareCropButtonVisible else { return }
+        
         if onlySquare {
             squareCropButton.isHidden = true
         } else {
