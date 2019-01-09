@@ -91,6 +91,11 @@ class LibraryMediaManager {
         imageManager?.requestAVAsset(forVideo: videoAsset, options: videosOptions) { asset, _, _ in
             do {
                 guard let asset = asset else { print("⚠️ PHCachingImageManager >>> Don't have the asset"); return }
+
+                if let urlAsset = asset as? AVURLAsset {
+                    callback(urlAsset.url)
+                    return
+                }
                 
                 let assetComposition = AVMutableComposition()
                 let assetMaxDuration = self.getMaxVideoDuration(between: duration, andAssetDuration: asset.duration)
